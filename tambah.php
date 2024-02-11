@@ -1,8 +1,16 @@
-<?php 
+<?php
+
+session_start();
+
+if (!isset($_SESSION["login"])) {
+	header("Location: login.php");
+	exit;
+}
+
 require 'functions.php';
 
-if(isset($_POST["tambah"]) ) {
-	if(tambah($_POST) > 0 ) {
+if (isset($_POST["tambah"])) {
+	if (tambah($_POST) > 0) {
 		echo "<script>
 				alert('data berhasil ditambahkan!');
 				document.location.href = 'index.php';
@@ -17,13 +25,17 @@ if(isset($_POST["tambah"]) ) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<title>Tambah Data Mahasiswa</title>
 	<style>
-		ul li { list-style: none; }
+		ul li {
+			list-style: none;
+		}
 	</style>
 </head>
+
 <body>
 	<h1>Tambah Data Mahasiswa</h1>
 	<form action="" method="post">
@@ -40,11 +52,12 @@ if(isset($_POST["tambah"]) ) {
 				<label for="jurusan">Jurusan : </label>
 				<input type="text" name="jurusan" id="jurusan">
 			</li>
-			
+
 			<li>
 				<button type="submit" name="tambah">Tambah Data!</button>
 			</li>
 		</ul>
 	</form>
 </body>
+
 </html>

@@ -1,12 +1,20 @@
-<?php 
+<?php
+
+session_start();
+
+if (!isset($_SESSION["login"])) {
+	header("Location: login.php");
+	exit;
+}
+
 require 'functions.php';
 
 $id = $_GET["id"];
 $data = query("SELECT * FROM data WHERE id = $id")[0];
 
 
-if( isset($_POST["ubah"]) ) {
-	if( ubah($_POST) > 0 ) {
+if (isset($_POST["ubah"])) {
+	if (ubah($_POST) > 0) {
 		echo "<script>
 				alert('data berhasil diubah!');
 				document.location.href = 'index.php';
@@ -21,13 +29,17 @@ if( isset($_POST["ubah"]) ) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<title>Ubah Data Mahasiswa</title>
 	<style>
-		ul li { list-style: none; }
+		ul li {
+			list-style: none;
+		}
 	</style>
 </head>
+
 <body>
 	<h1>Ubah Data Mahasiswa</h1>
 	<form action="" method="post">
@@ -45,11 +57,12 @@ if( isset($_POST["ubah"]) ) {
 				<label for="jurusan">jurusan : </label>
 				<input type="text" name="jurusan" id="jurusan" value="<?php echo $data["jurusan"]; ?>">
 			</li>
-			
+
 			<li>
 				<button type="submit" name="ubah">Ubah Data!</button>
 			</li>
 		</ul>
 	</form>
 </body>
+
 </html>
