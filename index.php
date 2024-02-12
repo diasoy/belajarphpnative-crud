@@ -44,6 +44,7 @@ if (isset($_POST["cari"])) {
 	</form>
 
 	<!-- navigasi -->
+	
 	<?php if ($halamanAktif > 1) : ?>
 		<a href="?halaman=<?= $halamanAktif - 1; ?>">&laquo;</a>
 	<?php endif; ?>
@@ -61,6 +62,7 @@ if (isset($_POST["cari"])) {
 	<?php if ($halamanAktif < $jumlahHalaman) : ?>
 		<a href="?halaman=<?= $halamanAktif + 1; ?>">&raquo;</a>
 	<?php endif; ?>
+
 
 	<br>
 	<div id="container">
@@ -92,6 +94,7 @@ if (isset($_POST["cari"])) {
 			<?php } ?>
 		</table>
 	</div>
+	<script src="jquery-3.7.1.min.js"></script>	
 	<script src="script.js"></script>
 </body>
 
